@@ -180,52 +180,53 @@
 						</div>
 						<!-- Form -->
 						<section id="reviewForm">
-							<form method="post" onSubmit="submitReview">
-								<input type="text" name="review" placeholder="Enter Review" rows="4">
-							</form>
-							<ul class="actions">
+
+							<form id="myForm"> 
+								<input type="text" name="name" placeholder="Enter Name" >
+								<input type="text" name="review" placeholder="Enter Review" >
 								<li>
 									<input 
 										style="margin-top: 16px;"
-										type="submit"   
-
-										name="submitReview"
-
-										id="submitReview" 
-										value="Post Review" 
-										onclick="submitReview()"
+										type="button"
+										value="Submit Review"
+										onclick="myFunction()"
 										/>
 									</li>	
 							</ul>
+						</form>
 						</section>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  document.getElementById("myData").innerHTML = "Review Posted";
+	console.log('somehtn')
+
+	var formData = JSON.stringify($("#myForm").serializeArray());
+	console.log('formData', formData)
+
+	fetch('http://localhost:3333/reviews', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+								body:  formData,
+        })
+
+    };
+
+
+</script>
+
 
 					</section>
 
 				
-<h2>Recent Reviews</h2>
+
 
 	<!-- Loads and Displays Reviews Start-->
 	<div id="myData"></div>
-
-	
-	<!-- <script>
-		async function postData(url = '', data = {}) {
-  // Default options are marked with *
-  const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
-  return response.json();
-</script> -->
 
 	<script>
 		fetch('http://localhost:3333/')
@@ -249,7 +250,7 @@
 		}
 </script>
 <!-- Loads and Displays Reviews End-->
-
+<h2>Recent Reviews</h2>
 <!-- posted reviews end -->
 
 				<!-- Three -->
