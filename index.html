@@ -183,6 +183,7 @@
 
 							<form id="myForm"> 
 								<input type="text" name="name" placeholder="Enter Name" >
+								<div style="margin-top: 16px;"></div>
 								<input type="text" name="review" placeholder="Enter Review" >
 								<li>
 									<input 
@@ -200,8 +201,7 @@
 
 <script>
 function myFunction() {
-  document.getElementById("myData").innerHTML = "Review Posted";
-	console.log('somehtn')
+  document.getElementById("myData").innerHTML = "Review Posted".fontsize(20).fontcolor('#49bf9d');
 
 	var formData = JSON.stringify($("#myForm").serializeArray());
 	console.log('formData', formData)
@@ -213,7 +213,9 @@ function myFunction() {
                 },
 								body:  formData,
         })
-
+				setTimeout(function () {
+        location.reload()
+    }, 3000);
     };
 
 
@@ -241,15 +243,17 @@ function myFunction() {
 				});
 		function appendData(data) {
 				var mainContainer = document.getElementById("myData");
-				for (var i = 0; i < data.length; i++) {
+				for (var i = data.length - 1; i >=0; i--) {
 					console.log('data', data[i].name)
 						var div = document.createElement("div");
 						div.innerHTML = 'Name: ' + data[i].name + ' Review: ' + data[i].review;
+						div.style = "margin-top: 16px;"
 						mainContainer.appendChild(div);
 				}
 		}
 </script>
 <!-- Loads and Displays Reviews End-->
+<div style="margin-top: 16px;"></div>
 <h2>Recent Reviews</h2>
 <!-- posted reviews end -->
 
