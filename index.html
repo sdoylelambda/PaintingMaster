@@ -185,17 +185,17 @@
 								<input type="text" name="name" placeholder="Enter Name" >
 								<div style="margin-top: 16px;"></div>
 								<input type="text" name="review" placeholder="Enter Review" >
-								<li>
+							
 									<input 
 										style="margin-top: 16px;"
 										type="button"
 										value="Submit Review"
 										onclick="myFunction()"
 										/>
-									</li>	
-							</ul>
+		
 						</form>
 						</section>
+						<h2>Recent Reviews</h2>
 
 <p id="demo"></p>
 
@@ -243,18 +243,21 @@ function myFunction() {
 				});
 		function appendData(data) {
 				var mainContainer = document.getElementById("myData");
-				for (var i = data.length - 1; i >=0; i--) {
+				for (var i = data.length - 1; i >= 0; i--) {
 					console.log('data', data[i].name)
 						var div = document.createElement("div");
-						div.innerHTML = 'Name: ' + data[i].name + ' Review: ' + data[i].review;
+						div.innerHTML = 'Name: ' + data[i].name  
 						div.style = "margin-top: 16px;"
 						mainContainer.appendChild(div);
+						var div2 = document.createElement("div");
+						div2.innerHTML = 'Review: ' + data[i].review;
+						mainContainer.appendChild(div2);
 				}
 		}
 </script>
 <!-- Loads and Displays Reviews End-->
 <div style="margin-top: 16px;"></div>
-<h2>Recent Reviews</h2>
+
 <!-- posted reviews end -->
 
 				<!-- Three -->
