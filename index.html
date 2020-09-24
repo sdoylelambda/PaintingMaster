@@ -172,6 +172,94 @@
 						</ul>
 					</section>
 
+
+					<!-- Reviews Section -->
+					<section id="reviews">
+						<div>
+							<h2>Reviews</h2>
+						</div>
+						<!-- Form -->
+						<section id="reviewForm">
+
+							<form id="myForm"> 
+								<input type="text" name="name" placeholder="Enter Name" >
+								<div style="margin-top: 16px;"></div>
+								<input type="text" name="review" placeholder="Enter Review" >
+							
+									<input 
+										style="margin-top: 16px;"
+										type="button"
+										value="Submit Review"
+										onclick="myFunction()"
+										/>
+		
+						</form>
+						</section>
+						<h2>Recent Reviews</h2>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  document.getElementById("myData").innerHTML = "Review Posted".fontsize(20).fontcolor('#49bf9d');
+
+	var formData = JSON.stringify($("#myForm").serializeArray());
+	console.log('formData', formData)
+
+	fetch('https://painting-master.herokuapp.com/reviews', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+								body:  formData,
+        })
+				setTimeout(function () {
+        location.reload()
+    }, 3000);
+    };
+
+
+</script>
+
+
+					</section>
+
+				
+
+
+	<!-- Loads and Displays Reviews Start-->
+	<div id="myData"></div>
+
+	<script>
+		fetch('https://painting-master.herokuapp.com/')
+				.then(function (response) {
+						return response.json();
+				})
+				.then(function (data) {
+						appendData(data);
+				})
+				.catch(function (err) {
+						console.log('error: ' + err);
+				});
+		function appendData(data) {
+				var mainContainer = document.getElementById("myData");
+				for (var i = data.length - 1; i >= 0; i--) {
+					console.log('data', data[i].name)
+						var div = document.createElement("div");
+						div.innerHTML = 'Name: ' + data[i].name  
+						div.style = "margin-top: 16px;"
+						mainContainer.appendChild(div);
+						var div2 = document.createElement("div");
+						div2.innerHTML = 'Review: ' + data[i].review;
+						mainContainer.appendChild(div2);
+				}
+		}
+</script>
+<!-- Loads and Displays Reviews End-->
+<div style="margin-top: 16px;"></div>
+
+<!-- posted reviews end -->
+
 				<!-- Three -->
 					<section id="three">
 						<h2>Get In Touch</h2>
@@ -179,11 +267,7 @@
 							<div class="col-8 col-12-small">
 
 
-
-<!-- 
-form  -->
-
-
+<!-- form  -->
 							<section id="contact"> 
 								<form method="post" action="#" data-netlify="true">
 									<div class="row gtr-uniform gtr-50">
@@ -209,6 +293,7 @@ form  -->
 							</form>
 							</div>
 						</section>
+						
 							<div class="col-4 col-12-small">
 								<ul class="labeled-icons">
 										<li>
@@ -230,12 +315,20 @@ form  -->
 												<a href="https://www.facebook.com/danddpaintingtherepaintspecialist/" class="icon fa-facebook">  Facebook<span class="label">FaceBook</span></a></li>
 										</ul>
 									</div>
+
+
+
+
 								</div>
 							</li>
 						</ul>
 					</div>
 				</div>
 					</section>
+
+				
+
+				
 
 				<!-- Four -->
 				<!--
