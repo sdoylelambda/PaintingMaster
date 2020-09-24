@@ -206,7 +206,7 @@ function myFunction() {
 	var formData = JSON.stringify($("#myForm").serializeArray());
 	console.log('formData', formData)
 
-	fetch('http://localhost:3333/reviews', {
+	fetch('https://painting-master.herokuapp.com/reviews', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -231,7 +231,7 @@ function myFunction() {
 	<div id="myData"></div>
 
 	<script>
-		fetch('http://localhost:3333/')
+		fetch('https://painting-master.herokuapp.com/')
 				.then(function (response) {
 						return response.json();
 				})
