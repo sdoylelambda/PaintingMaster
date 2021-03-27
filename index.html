@@ -184,7 +184,9 @@ function myFunction() {
   document.getElementById("myData").innerHTML = "Review Posted".fontsize(20).fontcolor('#49bf9d');
 
 	var formData = JSON.stringify($("#myForm").serializeArray());
-	console.log('formData', formData)
+	console.log('formData')
+	console.log($(name).serializeArray())
+	if ($(name).serializeArray() != "") {
 
 	fetch('https://painting-master.herokuapp.com/reviews', {
                 method: 'POST',
@@ -196,8 +198,10 @@ function myFunction() {
 				setTimeout(function () {
         location.reload()
     }, 3000);
-    };
-
+    } else {
+			alert("All fields must be filled out");
+		};
+	}
 </script>
 </section>
 
