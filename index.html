@@ -186,7 +186,7 @@ function myFunction() {
 	var formData = JSON.stringify($("#myForm").serializeArray());
 	console.log('formData')
 	console.log($(name).serializeArray())
-	if ($(name).serializeArray() != "") {
+	// if ($(name).serializeArray() != "") {
 
 	fetch('https://painting-master.herokuapp.com/reviews', {
                 method: 'POST',
@@ -198,9 +198,9 @@ function myFunction() {
 				setTimeout(function () {
         location.reload()
     }, 3000);
-    } else {
-			alert("All fields must be filled out");
-		};
+    // } else {
+		// 	alert("All fields must be filled out");
+		// };
 	}
 </script>
 </section>
@@ -224,6 +224,7 @@ function myFunction() {
 				var mainContainer = document.getElementById("myData");
 				for (var i = data.length - 1; i >= 0; i--) {
 					console.log('data', data[i].name)
+					// if (data[i].name){
 						var div = document.createElement("div");
 						div.innerHTML = 'Name: ' + data[i].name  
 						div.style = "margin-top: 16px;"
@@ -231,6 +232,7 @@ function myFunction() {
 						var div2 = document.createElement("div");
 						div2.innerHTML = 'Review: ' + data[i].review;
 						mainContainer.appendChild(div2);
+					// }
 				}
 		}
 </script>
