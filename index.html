@@ -224,7 +224,7 @@ function myFunction() {
 				var mainContainer = document.getElementById("myData");
 				for (var i = data.length - 1; i >= 0; i--) {
 					console.log('data', data[i].name)
-					// if (data[i].name){
+					if (data[i].name){
 						var div = document.createElement("div");
 						div.innerHTML = 'Name: ' + data[i].name  
 						div.style = "margin-top: 16px;"
@@ -232,7 +232,7 @@ function myFunction() {
 						var div2 = document.createElement("div");
 						div2.innerHTML = 'Review: ' + data[i].review;
 						mainContainer.appendChild(div2);
-					// }
+					}
 				}
 		}
 </script>
